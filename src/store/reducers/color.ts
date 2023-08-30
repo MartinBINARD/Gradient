@@ -25,12 +25,7 @@ import { AppState } from '../../@types';
 // ça évite les erreurs « bêtes » comme les fautes d'orthographe
 export const CHANGE_FIRST_COLOR = 'change_first_color';
 export const CHANGE_LAST_COLOR = 'change_last_color';
-export const CHANGE_DIRECTION_TO_LEFT = 'change_direction_to_left';
-export const CHANGE_DIRECTION_TO_RIGHT = 'change_direction_to_right';
-export const CHANGE_DIRECTION_TO_45 = 'change_direction_to_45';
-export const CHANGE_DIRECTION_TO_135 = 'change_direction_to_135';
-export const CHANGE_DIRECTION_TO_225 = 'change_direction_to_225';
-export const CHANGE_DIRECTION_TO_315 = 'change_direction_to_315';
+export const CUSTOM_DIRECTION = 'custom_direction';
 
 // je crée mon state initial
 const initialState: AppState = {
@@ -81,40 +76,10 @@ const colorReducer: Reducer<AppState, AnyAction> = (
         lastColor: action.payload,
       };
 
-    case CHANGE_DIRECTION_TO_LEFT:
+    case CUSTOM_DIRECTION:
       return {
         ...state,
-        direction: '270deg',
-      };
-
-    case CHANGE_DIRECTION_TO_RIGHT:
-      return {
-        ...state,
-        direction: '90deg',
-      };
-
-    case CHANGE_DIRECTION_TO_45:
-      return {
-        ...state,
-        direction: '45deg',
-      };
-
-    case CHANGE_DIRECTION_TO_135:
-      return {
-        ...state,
-        direction: '135deg',
-      };
-
-    case CHANGE_DIRECTION_TO_225:
-      return {
-        ...state,
-        direction: '225deg',
-      };
-
-    case CHANGE_DIRECTION_TO_315:
-      return {
-        ...state,
-        direction: '315deg',
+        direction: action.payload,
       };
 
     default:

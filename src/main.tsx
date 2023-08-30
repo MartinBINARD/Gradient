@@ -1,12 +1,7 @@
 // == Imports
 import store from './store';
 import {
-  CHANGE_DIRECTION_TO_LEFT,
-  CHANGE_DIRECTION_TO_RIGHT,
-  CHANGE_DIRECTION_TO_45,
-  CHANGE_DIRECTION_TO_135,
-  CHANGE_DIRECTION_TO_225,
-  CHANGE_DIRECTION_TO_315,
+  CUSTOM_DIRECTION,
   CHANGE_FIRST_COLOR,
   CHANGE_LAST_COLOR,
 } from './store/reducers/color';
@@ -189,47 +184,43 @@ document.getElementById('randLast')!.addEventListener('click', () => {
 });
 
 document.getElementById('toLeft')!.addEventListener('click', () => {
-  // // data
-  // state.direction = '270deg';
-  // // ui
-  // renderGradient();
-  // renderColors();
   store.dispatch({
-    type: CHANGE_DIRECTION_TO_LEFT,
+    type: CUSTOM_DIRECTION,
+    payload: '270deg',
   });
 });
 
 document.getElementById('toRight')!.addEventListener('click', () => {
-  // // data
-  // state.direction = '90deg';
-  // // ui
-  // renderGradient();
-  // renderColors();
   store.dispatch({
-    type: CHANGE_DIRECTION_TO_RIGHT,
+    type: CUSTOM_DIRECTION,
+    payload: '90deg',
   });
 });
 
 document.getElementById('to45')!.addEventListener('click', () => {
   store.dispatch({
-    type: CHANGE_DIRECTION_TO_45,
+    type: CUSTOM_DIRECTION,
+    payload: '45deg',
   });
 });
 
 document.getElementById('to135')!.addEventListener('click', () => {
   store.dispatch({
-    type: CHANGE_DIRECTION_TO_135,
+    type: CUSTOM_DIRECTION,
+    payload: '135deg',
   });
 });
 
 document.getElementById('to225')!.addEventListener('click', () => {
   store.dispatch({
-    type: CHANGE_DIRECTION_TO_225,
+    type: CUSTOM_DIRECTION,
+    payload: '225deg',
   });
 });
 
 document.getElementById('to315')!.addEventListener('click', () => {
   store.dispatch({
-    type: CHANGE_DIRECTION_TO_315,
+    type: CUSTOM_DIRECTION,
+    payload: '315deg',
   });
 });
