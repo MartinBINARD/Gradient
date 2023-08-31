@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/redux';
 
 function NbColors() {
   /*
@@ -24,8 +25,11 @@ function NbColors() {
     à la modification de ce qui est retourné par le _selector_
     → ici, à chaque fois que `nbColors`,
       le composant `<NbColors />` sera re-rendu
+
+    ATTENTION :
+    on utilise la version TYPÉE de `useSelector` (`useAppSelector`)
   */
-  const nbColors = useSelector((state) => state.color.nbColors);
+  const nbColors = useAppSelector((state) => state.color.nbColors);
 
   return <div className="nbColors">{nbColors} couleur(s) générée(s)</div>;
 }

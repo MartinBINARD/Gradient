@@ -15,3 +15,8 @@ const store = configureStore({
 });
 
 export default store;
+
+// Pour éviter de devoir typer à la main notre state,
+// on demande à TS de le faire automatiquement pour nous.
+// Le state aura pour type le retour de la méthode `store.getState()`
+export type RootState = ReturnType<typeof store.getState>;
