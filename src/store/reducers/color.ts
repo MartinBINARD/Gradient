@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { AppState, TDirection } from '../../@types';
+import { AppState, TColor, TDirection } from '../../@types';
 
 const initialState: AppState = {
   firstColor: '#b0b',
@@ -47,12 +47,24 @@ export const changeDirection = createAction<TDirection>(
 //     output :
 //     Object { type: "color/change-direction", payload: "270deg" }
 
+export const changeFirstColor = createAction<TColor>('color/first');
+export const changeLastColor = createAction<TColor>('color/last');
+
 const colorReducer = createReducer(initialState, (builder) => {
   // pour ajouter une action :
-  builder.addCase(changeDirection, (state, action) => {
-    // avec Immer, je peux changer directement la valeur dans mon state
-    state.direction = action.payload;
-  });
+  builder
+    .addCase(changeDirection, (state, action) => {
+      // avec Immer, je peux changer directement la valeur dans mon state
+      state.direction = action.payload;
+    })
+    .addCase(changeFirstColor, (state, action) => {
+      state.firstColor = action.payload;
+      state.nbColors += 1;
+    })
+    .addCase(changeLastColor, (state, action) => {
+      state.lastColor = action.payload;
+      state.nbColors += 1;
+    });
 });
 
 export default colorReducer;

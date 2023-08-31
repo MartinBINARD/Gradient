@@ -4,11 +4,15 @@ import store from './store';
 //   CHANGE_FIRST_COLOR,
 //   CHANGE_LAST_COLOR,
 // } from './store/reducers/color';
+import {
+  changeDirection,
+  changeFirstColor,
+  changeLastColor,
+} from './store/reducers/color';
 
 import { randomHexColor, generateSpanColor } from './utils/color';
 
 import './styles/index.scss';
-import { changeDirection } from './store/reducers/color';
 
 function renderNbColors() {
   const state = store.getState();
@@ -46,35 +50,39 @@ store.subscribe(() => {
   renderColors();
 });
 
-// document.getElementById('randAll')!.addEventListener('click', () => {
-//   const action = {
-//     type: CHANGE_FIRST_COLOR,
-//     payload: randomHexColor(),
-//   };
+document.getElementById('randAll')!.addEventListener('click', () => {
+  //   const action = {
+  //     type: CHANGE_FIRST_COLOR,
+  //     payload: randomHexColor(),
+  //   };
 
-//   store.dispatch(action);
+  //   store.dispatch(action);
 
-//   store.dispatch({
-//     type: CHANGE_LAST_COLOR,
-//     payload: randomHexColor(),
-//   });
-// });
+  //   store.dispatch({
+  //     type: CHANGE_LAST_COLOR,
+  //     payload: randomHexColor(),
+  //   });
+  store.dispatch(changeFirstColor(randomHexColor()));
+  store.dispatch(changeLastColor(randomHexColor()));
+});
 
-// document.getElementById('randFirst')!.addEventListener('click', () => {
-//   const action = {
-//     type: CHANGE_FIRST_COLOR,
-//     payload: randomHexColor(),
-//   };
+document.getElementById('randFirst')!.addEventListener('click', () => {
+  // const action = {
+  //   type: CHANGE_FIRST_COLOR,
+  //   payload: randomHexColor(),
+  // };
 
-//   store.dispatch(action);
-// });
+  // store.dispatch(action);
+  store.dispatch(changeFirstColor(randomHexColor()));
+});
 
-// document.getElementById('randLast')!.addEventListener('click', () => {
-//   store.dispatch({
-//     type: CHANGE_LAST_COLOR,
-//     payload: randomHexColor(),
-//   });
-// });
+document.getElementById('randLast')!.addEventListener('click', () => {
+  // store.dispatch({
+  //   type: CHANGE_LAST_COLOR,
+  //   payload: randomHexColor(),
+  // });
+  store.dispatch(changeLastColor(randomHexColor()));
+});
 
 document.getElementById('to270')!.addEventListener('click', () => {
   // store.dispatch({
