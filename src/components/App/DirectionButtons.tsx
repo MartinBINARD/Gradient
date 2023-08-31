@@ -1,14 +1,24 @@
 import { useDispatch } from 'react-redux';
 
 import { changeDirection } from '../../store/reducers/color';
+import { TDirection } from '../../@types';
 
 function DirectionButtons() {
   const dispatch = useDispatch();
 
+  // méthode « répétitive »
+  // 1 bouton = 1 direction = 1 dispatch
+  const handleChangeTo45 = (event) => {
+    dispatch(changeDirection('45deg'));
+  };
+  const handleChangeTo90 = (event) => {
+    dispatch(changeDirection('90deg'));
+  };
+
   // méthode curryfiée qui permet un appel en 2 temps à notre handler :
   //  - 1er temps lors de la déclaration, je donne ma direction
   //  - 2nd temps lors du clic, `event` est donné
-  const handleDirection = (direction) => (event) => {
+  const handleDirection = (direction: TDirection) => () => {
     dispatch(changeDirection(direction));
   };
 
@@ -17,14 +27,14 @@ function DirectionButtons() {
       <button
         type="button"
         className="button"
-        onClick={handleDirection('45deg')}
+        onClick={(event) => handleChangeTo45(event)}
       >
         45°
       </button>
       <button
         type="button"
         className="button"
-        onClick={handleDirection('90deg')}
+        onClick={(event) => handleChangeTo90(event)}
       >
         90°
       </button>
