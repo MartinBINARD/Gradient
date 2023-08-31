@@ -1,10 +1,10 @@
 // == Imports
 import store from './store';
-import {
-  CUSTOM_DIRECTION,
-  CHANGE_FIRST_COLOR,
-  CHANGE_LAST_COLOR,
-} from './store/reducers/color';
+// import {
+//   CUSTOM_DIRECTION,
+//   CHANGE_FIRST_COLOR,
+//   CHANGE_LAST_COLOR,
+// } from './store/reducers/color';
 
 import { randomHexColor, generateSpanColor } from './utils/color';
 
